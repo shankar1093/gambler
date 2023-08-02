@@ -15,7 +15,7 @@ To run the automated Chumba Code game, follow the steps below:
    Once Node.js is installed, navigate to the directory containing the script, and run the following command to install the required dependencies:
 
    ```
-   npm install puppeteer
+   npm install
    ```
 
 2. **Run the Script**:
