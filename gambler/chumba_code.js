@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer'); // v13.0.0 or later
 
 (async () => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({headless:false});
     const page = await browser.newPage();
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
@@ -9,8 +9,8 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     {
         const targetPage = page;
         await targetPage.setViewport({
-            width: 777,
-            height: 909
+            width: 790,
+            height: 925
         })
     }
     {
@@ -60,15 +60,11 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 52.1875,
-            y: 6.7109375,
+            x: 67.6875,
+            y: 12.7109375,
           },
         });
         await Promise.all(promises);
-    }
-    {
-        const targetPage = page;
-        await targetPage.keyboard.down('Meta');
     }
     {
         const targetPage = page;
@@ -96,8 +92,8 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 138.5,
-            y: 23.015625,
+            x: 222,
+            y: 19.015625,
           },
         });
     }
@@ -169,8 +165,39 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 38.5,
-            y: 28.8203125,
+            x: 77,
+            y: 20.8203125,
+          },
+        });
+    }
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([
+            [
+                '#login_password-input'
+            ],
+            [
+                'xpath///*[@id="login_password-input"]'
+            ],
+            [
+                'pierce/#login_password-input'
+            ]
+        ], targetPage, timeout);
+        const element = await waitForSelectors([
+            [
+                '#login_password-input'
+            ],
+            [
+                'xpath///*[@id="login_password-input"]'
+            ],
+            [
+                'pierce/#login_password-input'
+            ]
+        ], targetPage, { timeout, visible: true });
+        await element.click({
+          offset: {
+            x: 155,
+            y: 16.8203125,
           },
         });
     }
@@ -256,8 +283,8 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 127.5,
-            y: 18.8203125,
+            x: 170,
+            y: 19.8203125,
           },
         });
         await Promise.all(promises);
@@ -300,45 +327,8 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 91.5,
-            y: 13.5,
-          },
-        });
-    }
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([
-            [
-                '#offer__close'
-            ],
-            [
-                'xpath///*[@id="offer__close"]'
-            ],
-            [
-                'pierce/#offer__close'
-            ],
-            [
-                'text/Close'
-            ]
-        ], targetPage, timeout);
-        const element = await waitForSelectors([
-            [
-                '#offer__close'
-            ],
-            [
-                'xpath///*[@id="offer__close"]'
-            ],
-            [
-                'pierce/#offer__close'
-            ],
-            [
-                'text/Close'
-            ]
-        ], targetPage, { timeout, visible: true });
-        await element.click({
-          offset: {
-            x: 152.5625,
-            y: 18.9375,
+            x: 80,
+            y: 27.5,
           },
         });
     }
@@ -382,8 +372,8 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 105.75,
-            y: 6.2109375,
+            x: 99.25,
+            y: 3.0546875,
           },
         });
         await Promise.all(promises);
@@ -428,13 +418,13 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
         ], targetPage, { timeout, visible: true });
         await element.click({
           offset: {
-            x: 237.5,
-            y: 9,
+            x: 237,
+            y: 5,
           },
         });
     }
     await new Promise(r => setTimeout(r, 3000));
-    await page.screenshot({ path: 'page.png', fullPage: true });
+    await page.screenshot({ path: 'captcha_page.png', fullPage: true });
     await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
